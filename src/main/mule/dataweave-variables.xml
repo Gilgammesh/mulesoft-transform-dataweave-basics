@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="dataweave-pre-defined-variables-flow" doc:id="e2fb011a-7594-4139-8541-94452acc752d" >
+		<ee:transform doc:name="Transform Message" doc:id="b8412ac6-552d-4463-ab5e-494af30b72e6" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"app": app.encoding,
+	"flow": flow.name,
+	"mule": mule.version,
+	"server": server.timeZone	
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="dataweave-user-defined-variables-flow" doc:id="cc5ab7da-1e6f-453c-8c7b-37762e078201" >
+		<ee:transform doc:name="Transform Message" doc:id="b13807d5-4b44-4b92-b9a0-c6ecb9c7e8d6" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+var firstName = "Carlos"
+var lastName = "Santander"
+---
+firstName ++ " " ++ lastName]]></ee:set-payload>
+			</ee:message>
+			<ee:variables >
+				<ee:set-variable variableName="statusCode" ><![CDATA[200]]></ee:set-variable>
+				<ee:set-variable variableName="httpResponse" ><![CDATA["OK"]]></ee:set-variable>
+			</ee:variables>
+		</ee:transform>
+	</flow>
+</mule>

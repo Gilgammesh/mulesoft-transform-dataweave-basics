@@ -1,0 +1,13 @@
+{
+  "sampleData": {
+    "7ffa075d-e0bb-46a6-8d8b-8e60fa095f63": {
+      "payload": "sample_data/json.json"
+    },
+    "4bf6e603-a086-44b5-a2af-08e164968fd2": {
+      "payload": "sample_data/json_1.json"
+    },
+    "cb146dfc-1022-40ed-bee7-fbc038fbda1f": {
+      "payload": "sample_data/covidcase.xml"
+    }
+  }
+}

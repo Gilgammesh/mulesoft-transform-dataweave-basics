@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="dataweave-data-types-flow" doc:id="85aeba2c-4241-4079-91d6-ad60ce79d3db" >
+		<ee:transform doc:name="Transform Message" doc:id="71c7c502-9b4a-4427-be0d-1b0b8c369e77" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+{
+	myString: "hello world",
+	myNumber: 123,
+	myVeryBigNumber: 12341234134123412341234123,
+	myFloatingPointNumber: 123.456,
+	myBoolean: true,
+	myDate: |2018-12-07|,
+	myTime: |11:55:56|,
+	myDateTime: |2018-10-01T23:57:59-03:00|,
+	myLocalDateTime: |2018-10-01T23:57:59-03:00|,
+	myArray: [1, 2, 3, 5, 8],
+	myMixedArray: [1, 2, "blah", {
+		hello: "there"
+	}],
+	myObject: {
+		caseID: 267,
+		caseName: "Pepper"
+	}
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>
